@@ -10,9 +10,8 @@ pipeline {
     stage('build') {
       steps {
         sh '''#!/bin/bash
-sudo apt update
-sudo apt install -y npm nodejs
-'''
+npm install
+npm build'''
       }
     }
 
@@ -44,8 +43,7 @@ npm test
 
     stage('docker build') {
       steps {
-        build 'build'
-        dockerNode(image: 'recicdbuildimage')
+        sh 'def app = docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")'
       }
     }
 
