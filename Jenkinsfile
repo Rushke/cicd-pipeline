@@ -42,7 +42,7 @@ npm test
 
     stage('docker build') {
       steps {
-        sh 'docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")'
+        sh 'docker.build(\'${DOCKER_IMAGE}:${env.BUILD_NUMBER}\')'
       }
     }
 
