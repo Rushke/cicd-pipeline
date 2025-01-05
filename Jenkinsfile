@@ -40,12 +40,6 @@ npm test
       }
     }
 
-    stage('docker build') {
-      steps {
-        sh 'def app = docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")'
-      }
-    }
-
     stage('docker push') {
       steps {
         sh '''docker.withRegistry(\'https://registry.hub.docker.com\', \'docker_hub_creds_id\')  
